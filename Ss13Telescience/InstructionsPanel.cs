@@ -71,7 +71,8 @@ With the Advanced options button you can set custom bearing, elevation and power
         string aboutRtf = @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
 {\colortbl ;\red0\green0\blue255;}
 {\*\generator Riched20 10.0.15063}\viewkind4\uc1 
-\pard\fs22\lang3082\par The goal of this application is to provide a fast interaction between the game (SpaceStation13) and the calculator, attempting to go from in-game coordinates to in-game bearing/elevation/power with the fewest mouse clicks and troubles.\par
+\pard\qc\b\fs19\lang3082\par SpaceStation13 Telescience Companion v1.0\b0\fs22\par\par
+\pard The goal of this application is to provide a fast interaction between the game (SpaceStation13) and the calculator, attempting to go from in-game coordinates to in-game bearing/elevation/power with the fewest mouse clicks and troubles.\par
 \par
 The calculation code was ported from RageAgainstheCondom's calculator: {{\field{\*\fldinst{HYPERLINK https://github.com/RageAgainstheCondom/SS13Telecoms-Paradise }}{\fldrslt{https://github.com/RageAgainstheCondom/SS13Telecoms-Paradise\ul0\cf0}}}}\f0\fs22\par
 Minor changes were made like rounding and the ability to calculate the offsets with variable bearing/elevation/power.\par
