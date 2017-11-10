@@ -3,6 +3,8 @@ A calculator for the telescience feature of the game Space Station 13
 
 The goal of this application is to provide a fast interaction between the game and the calculator, attempting to go from in-game coordinates to in-game bearing/elevation/power with the fewest mouse clicks and troubles.
 
+Download the latest release: https://github.com/Alriac/ss13TelescienceCompanion/releases/
+
 It has been successfully tested at Paradise Station server, I have no idea if it will work on other servers.
 If other servers are different, a server selector could be added to the tool.
 
