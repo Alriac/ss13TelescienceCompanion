@@ -41,6 +41,9 @@ namespace Ss13Telescience {
         }
 
         private void Telescience2_Load(object sender, EventArgs e) {
+            // Initialize stuff
+            this.trajcalc = new TrajectoryCalculator( 0, 0, 0, 0, 0, 0, 0 );
+
             // Topmost window setting
             chkOnTop.Checked = Properties.Settings.Default.checkOnTop;
             this.TopMost = chkOnTop.Checked;
@@ -151,14 +154,23 @@ namespace Ss13Telescience {
         /// </summary>
         private void btnAdvancedOptions_Click(object sender, EventArgs e) {
             // Creates the dialog and reads the result
-            var newDialog = new AdvancedCalibration();
+            var newDialog = new AdvancedCalibration( trajcalc.bearingOffset, trajcalc.powerOffset );
             newDialog.TopMost = this.TopMost; // Avoid the new dialog to stay behind the main form.
             DialogResult result = newDialog.ShowDialog();
 
-            // Shows the result to the user
-            setCalibrateButtonText();
             if(result == DialogResult.Cancel) setStatus( "Calibration settings not modified" );
-            else if(result == DialogResult.OK) setStatus( "New calibration settings saved!" );
+            else if(result == DialogResult.OK) {
+                grpCompute.Enabled = grpCompute.Enabled || trajcalc.bearingOffset != newDialog.currentBearingOffset || trajcalc.powerOffset != newDialog.currentPowerOffset;
+                this.trajcalc.setOffsets( newDialog.currentBearingOffset, newDialog.currentPowerOffset );
+
+                // Shows the result to the user
+                setCalibrateButtonText();
+                lblCalBe.Text = trajcalc.bearingOffset.ToString();
+                lblCalPow.Text = trajcalc.powerOffset.ToString();
+
+
+                setStatus( "New calibration settings saved!" );
+            }
         }
 
         /// <summary>
@@ -352,7 +364,7 @@ namespace Ss13Telescience {
                 Properties.Settings.Default.selectedPower;
             btnCalibrate.Text = "Calibrate (" + calData + ")";
 
-            toolTip1.SetToolTip( btnCalibrate, @"Calculates the offsets using the provided coordinates." + Environment.NewLine+
+            toolTip1.SetToolTip( btnCalibrate, @"Calculates the offsets using the provided coordinates." + Environment.NewLine +
                 "Assumes the probe was sent with:\n" +
                 " Bearing: " + Properties.Settings.Default.selectedBearing + "\n" +
                 " Elevation: " + Properties.Settings.Default.selectedElevation + "\n" +

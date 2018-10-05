@@ -31,8 +31,8 @@ namespace Ss13Telescience {
         #region Texts
         String instructionsRtf= @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset2 Symbol;}}
 {\*\generator Riched20 10.0.15063}\viewkind4\uc1 
-\pard\f0\fs22\lang3082\par
-\pard\b First you need to calculate the offsets:\par
+\pard\fs22\lang3082\par
+\b First you need to calculate the offsets:\par
 
 \pard 
 {\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
@@ -42,8 +42,8 @@ namespace Ss13Telescience {
 {\pntext\f0 4.\tab}\b0 Click the Calibrate button.\b\par
 
 \pard\b0\par
-
-\pard\par
+* Alternatively you can open the Advanced Calibration window and manually input the offsets if you already have them (check Advanced Calibration section below). \par
+\par
 \b Then you can calculate coordinates:\b0\par
 Once it is calibrated, you simply input the target( X, Y ) coordinates in the Destination fields and click the Calculate button.\par
 \par
@@ -54,6 +54,11 @@ Now you can copy the values from the Result panel into the telescience computer.
 \b Advanced calibration:\b0\par
 With the Advanced options button you can set custom bearing, elevation and power to calculate the offset.\par
 \par
+You can also manually set the bearing and power offsets. This is very useful in case another player already calculated the offsets and shared them with you, or if you closed the program by accident and don't remember the coordinates where the first probe landed. This way you don't need to send a probe GPS or use the calibrate button.\par
+\par
+\b Server selection:\par
+\b0 Different servers may have different code to calculate telescience. If the server you are playing on is not on the list, use the first one. If that doesn't work for your server, report an issue to the github page so it can be added (or add it yourself, this is open source!).\par
+\par
 \b Tips:\par
 
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\b0 The numbers from the Calibrate button are the bearing, elevation and power used to send the GPS probe.\par
@@ -63,9 +68,7 @@ With the Advanced options button you can set custom bearing, elevation and power
 {\pntext\f1\'B7\tab}While the Calculate button is focused, you can press the keyboard keys 1,2 and 3 to copy the resulting bearing, elevation and power.\par
 {\pntext\f1\'B7\tab}You can copy any coordinates directly from the game in any format and paste them directly in either of the X/Y coordinate fields.\line These are all valid examples: (123, 125) | 123, 125 | 123 125 | 123, 125, 1) | ((123  125 | etc.\par
 }
-\par\par
-
-";
+ ";
 
 
         string aboutRtf = @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}

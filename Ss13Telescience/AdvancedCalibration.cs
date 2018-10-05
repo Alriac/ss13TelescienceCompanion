@@ -12,18 +12,24 @@ namespace Ss13Telescience {
     public partial class AdvancedCalibration : Form {
 
 
-        public AdvancedCalibration() {
+        public int currentBearingOffset { get; set; }
+        public int currentPowerOffset { get; set; }
+
+        public AdvancedCalibration(int currentBearingOffset, int currentPowerOffset) {
             InitializeComponent();
 
             txtBearing.Text = Properties.Settings.Default.selectedBearing.ToString( "F0" );
             txtElevation.Text = Properties.Settings.Default.selectedElevation.ToString( "F0" );
             cmbPower.Text = Properties.Settings.Default.selectedPower.ToString();
 
+            this.txtBearingOffset.Text = ( this.currentBearingOffset = currentBearingOffset ).ToString( "F0" );
+            this.txtPowerOffset.Text = ( this.currentPowerOffset = currentPowerOffset ).ToString( "F0" );
+
             txtBearing.Focus();
         }
 
         private void cmbPower_Leave(object sender, EventArgs e) {
-            
+
         }
 
         /// <summary>
@@ -33,7 +39,7 @@ namespace Ss13Telescience {
         /// <param name="e"></param>
         private void btnOk_Click(object sender, EventArgs e) {
 
-            // Read and validate all 3 inputs
+            // Read and validate all 3 inputs from calibration settings
 
             int bearing = Util.readInt( txtBearing, -1 );
             if(bearing < 0 || bearing > 359) {
@@ -41,20 +47,37 @@ namespace Ss13Telescience {
                 return;
             }
             int elevation = Util.readInt( txtElevation );
-            if(elevation <= 0 || elevation > 89) {
-                MessageBox.Show( "The elevation must be a number from 1 to 89");
+            if(elevation < 5 || elevation > 89) {
+                MessageBox.Show( "The elevation must be a number from 5 to 89" );
                 return;
             }
             int power = Util.readInt( cmbPower );
             if(power < 5 || power > 80) {
-                MessageBox.Show( "The power must be a number from 5 to 80");
+                MessageBox.Show( "The power must be a number from 5 to 80" );
                 return;
             }
+
+            // Read and validate all 2 inputs from manual calibration
+            int bearingOffset = Util.readInt( txtBearingOffset, -1000 );
+            if(bearingOffset < -359 || bearingOffset > 359) {
+                MessageBox.Show( "The manual bearing offset must be a number from -359 to 359" );
+                return;
+            }
+            int powerOffset = Util.readInt( txtPowerOffset, -1000 );
+            if(powerOffset < -44 || powerOffset > 44) {
+                MessageBox.Show( "The manual power offset must be a number from -44 to 44" );
+                return;
+            }
+
 
             // Save the new values
             Properties.Settings.Default.selectedBearing = bearing;
             Properties.Settings.Default.selectedElevation = elevation;
             Properties.Settings.Default.selectedPower = power;
+
+            currentBearingOffset = bearingOffset;
+            currentPowerOffset = powerOffset;
+
             Properties.Settings.Default.Save();
 
             this.DialogResult = DialogResult.OK;
@@ -81,9 +104,7 @@ namespace Ss13Telescience {
             ( (TextBox)sender ).SelectAll();
         }
         private void txtFilterDigits_KeyPress(object sender, KeyPressEventArgs e) {
-            e.Handled = !char.IsDigit( e.KeyChar ) && !char.IsControl( e.KeyChar );
+            e.Handled = !char.IsDigit( e.KeyChar ) && !char.IsControl( e.KeyChar ) && !( e.KeyChar == '-' && !( sender as TextBoxBase ).Text.Contains( "-" ) );
         }
-
-
     }
 }

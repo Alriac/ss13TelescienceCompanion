@@ -33,16 +33,22 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBearingOffset = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPowerOffset = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.Location = new System.Drawing.Point(13, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 57);
+            this.label1.Size = new System.Drawing.Size(160, 57);
             this.label1.TabIndex = 0;
             this.label1.Text = "Input here the values you are going to use to send the gps probe.";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,7 +152,7 @@
             this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnOk.Location = new System.Drawing.Point(0, 172);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(178, 44);
+            this.btnOk.Size = new System.Drawing.Size(375, 44);
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "Save Values";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -159,17 +165,95 @@
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.btnCancel.Location = new System.Drawing.Point(0, 216);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(178, 31);
+            this.btnCancel.Size = new System.Drawing.Size(375, 31);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Location = new System.Drawing.Point(184, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(186, 90);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Here you can manually set some calculated offsets without calibrating.\r\nUseful wh" +
+    "en another player shares them to you.";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txtBearingOffset);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.txtPowerOffset);
+            this.panel2.Location = new System.Drawing.Point(181, 103);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(189, 61);
+            this.panel2.TabIndex = 26;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Bearing Offset:";
+            // 
+            // txtBearingOffset
+            // 
+            this.txtBearingOffset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBearingOffset.Location = new System.Drawing.Point(129, 4);
+            this.txtBearingOffset.Name = "txtBearingOffset";
+            this.txtBearingOffset.Size = new System.Drawing.Size(46, 23);
+            this.txtBearingOffset.TabIndex = 0;
+            this.txtBearingOffset.Click += new System.EventHandler(this.txtFocus_Enter);
+            this.txtBearingOffset.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtBearingOffset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtBearingOffset.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 36);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(93, 17);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Power Offset:";
+            // 
+            // txtPowerOffset
+            // 
+            this.txtPowerOffset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPowerOffset.Location = new System.Drawing.Point(129, 33);
+            this.txtPowerOffset.Name = "txtPowerOffset";
+            this.txtPowerOffset.Size = new System.Drawing.Size(46, 23);
+            this.txtPowerOffset.TabIndex = 1;
+            this.txtPowerOffset.Click += new System.EventHandler(this.txtFocus_Enter);
+            this.txtPowerOffset.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtPowerOffset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtPowerOffset.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
+            // 
+            // label7
+            // 
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label7.Location = new System.Drawing.Point(176, 7);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(2, 160);
+            this.label7.TabIndex = 27;
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // AdvancedCalibration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(178, 247);
+            this.ClientSize = new System.Drawing.Size(375, 247);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.panel1);
@@ -182,6 +266,8 @@
             this.Text = "Advanced Calibration";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -198,5 +284,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBearingOffset;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtPowerOffset;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -157,6 +157,13 @@ namespace Ss13Telescience {
             return result;
         }
 
+        /// <summary>
+        /// Manually sets the offsets instead of calculate them.
+        /// </summary>
+        public void setOffsets(int bearingOffset, int powerOffset) {
+            this.bearingOffset = bearingOffset;
+            this.powerOffset = powerOffset;
+        }
 
         private double toRadian(double angle) {
             return angle * ( Math.PI / 180.0 );
