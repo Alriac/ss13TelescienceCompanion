@@ -29,8 +29,8 @@ namespace Ss13Telescience {
         }
 
         #region Texts
-        String instructionsRtf= @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset2 Symbol;}}
-{\*\generator Riched20 10.0.15063}\viewkind4\uc1 
+        String instructionsRtf = @"{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}{\f1\fnil\fcharset2 Symbol;}}
+{\*\generator Riched20 6.3.9600}\viewkind4\uc1 
 \pard\fs22\lang3082\par
 \b First you need to calculate the offsets:\par
 
@@ -55,19 +55,21 @@ Now you can copy the values from the Result panel into the telescience computer.
 With the Advanced options button you can set custom bearing, elevation and power to calculate the offset.\par
 \par
 You can also manually set the bearing and power offsets. This is very useful in case another player already calculated the offsets and shared them with you, or if you closed the program by accident and don't remember the coordinates where the first probe landed. This way you don't need to send a probe GPS or use the calibrate button.\par
+But beaware! If the player who calculated the offsets is using a different calculator, the offset's sign may be inverted.\par
 \par
 \b Server selection:\par
-\b0 Different servers may have different code to calculate telescience. If the server you are playing on is not on the list, use the first one. If that doesn't work for your server, report an issue to the github page so it can be added (or add it yourself, this is open source!).\par
+\b0 Different servers may have different code to calculate telescience. If the server you are playing on is not on the list, use the default one. If that doesn't work for your server, report an issue to the github page so it can be added (or add it yourself, this is open source!).\par
 \par
 \b Tips:\par
 
-\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\b0 The numbers from the Calibrate button are the bearing, elevation and power used to send the GPS probe.\par
+\pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\b0 The numbers from the Calibrate button are the bearing, elevation and power used to send the GPS probe, in that order.\par
 {\pntext\f1\'B7\tab}The results numbers are actually buttons. If you click them, the displayed value will be copied to your clipboard.\par
 {\pntext\f1\'B7\tab}Read the tooltips. Almost everything in the app have a tooltip.\par
 {\pntext\f1\'B7\tab}Check the On top checkbox to keep the window always on top of the game.\par
 {\pntext\f1\'B7\tab}While the Calculate button is focused, you can press the keyboard keys 1,2 and 3 to copy the resulting bearing, elevation and power.\par
 {\pntext\f1\'B7\tab}You can copy any coordinates directly from the game in any format and paste them directly in either of the X/Y coordinate fields.\line These are all valid examples: (123, 125) | 123, 125 | 123 125 | 123, 125, 1) | ((123  125 | etc.\par
 }
+
  ";
 
 

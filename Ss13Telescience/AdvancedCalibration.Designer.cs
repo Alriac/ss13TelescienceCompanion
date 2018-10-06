@@ -40,13 +40,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtPowerOffset = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbServerSelection = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(13, 7);
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.Location = new System.Drawing.Point(13, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 57);
             this.label1.TabIndex = 0;
@@ -133,6 +137,7 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cmbPower);
@@ -140,7 +145,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtElevation);
-            this.panel1.Location = new System.Drawing.Point(5, 69);
+            this.panel1.Location = new System.Drawing.Point(5, 133);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(168, 95);
             this.panel1.TabIndex = 25;
@@ -150,7 +155,7 @@
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnOk.Location = new System.Drawing.Point(0, 172);
+            this.btnOk.Location = new System.Drawing.Point(0, 236);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(375, 44);
             this.btnOk.TabIndex = 3;
@@ -163,7 +168,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(0, 216);
+            this.btnCancel.Location = new System.Drawing.Point(0, 280);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(375, 31);
             this.btnCancel.TabIndex = 4;
@@ -173,8 +178,8 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.Location = new System.Drawing.Point(184, 7);
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Location = new System.Drawing.Point(184, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(186, 90);
             this.label5.TabIndex = 26;
@@ -184,13 +189,13 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txtBearingOffset);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.txtPowerOffset);
-            this.panel2.Location = new System.Drawing.Point(181, 103);
+            this.panel2.Location = new System.Drawing.Point(181, 167);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(189, 61);
             this.panel2.TabIndex = 26;
@@ -239,18 +244,39 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Location = new System.Drawing.Point(176, 7);
+            this.label7.Location = new System.Drawing.Point(176, 71);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(2, 160);
             this.label7.TabIndex = 27;
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cmbServerSelection);
+            this.groupBox1.Location = new System.Drawing.Point(5, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(365, 57);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Server selection";
+            // 
+            // cmbServerSelection
+            // 
+            this.cmbServerSelection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbServerSelection.FormattingEnabled = true;
+            this.cmbServerSelection.Location = new System.Drawing.Point(14, 23);
+            this.cmbServerSelection.Name = "cmbServerSelection";
+            this.cmbServerSelection.Size = new System.Drawing.Size(345, 24);
+            this.cmbServerSelection.TabIndex = 0;
+            // 
             // AdvancedCalibration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 247);
+            this.ClientSize = new System.Drawing.Size(375, 311);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label5);
@@ -268,6 +294,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -291,5 +318,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPowerOffset;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cmbServerSelection;
     }
 }

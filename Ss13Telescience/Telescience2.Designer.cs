@@ -29,10 +29,6 @@
             this.btnAdvancedOptions = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.txtInCalLocY = new Ss13Telescience.TextBoxPaste();
-            this.txtInCalLocX = new Ss13Telescience.TextBoxPaste();
-            this.txtInPadLocY = new Ss13Telescience.TextBoxPaste();
-            this.txtInPadLocX = new Ss13Telescience.TextBoxPaste();
             this.lblCalPow = new System.Windows.Forms.Label();
             this.lblCalBe = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,9 +43,7 @@
             this.grpCompute = new System.Windows.Forms.GroupBox();
             this.button6 = new System.Windows.Forms.Button();
             this.btnCalculate = new System.Windows.Forms.Button();
-            this.txtInDstY = new Ss13Telescience.TextBoxPaste();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtInDstX = new Ss13Telescience.TextBoxPaste();
             this.grpResult = new System.Windows.Forms.GroupBox();
             this.btnCpyPower = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -64,6 +58,12 @@
             this.btnDirectory = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.txtInDstY = new Ss13Telescience.TextBoxPaste();
+            this.txtInDstX = new Ss13Telescience.TextBoxPaste();
+            this.txtInCalLocY = new Ss13Telescience.TextBoxPaste();
+            this.txtInCalLocX = new Ss13Telescience.TextBoxPaste();
+            this.txtInPadLocY = new Ss13Telescience.TextBoxPaste();
+            this.txtInPadLocX = new Ss13Telescience.TextBoxPaste();
             this.grpSetup.SuspendLayout();
             this.grpCompute.SuspendLayout();
             this.grpResult.SuspendLayout();
@@ -105,8 +105,7 @@
             this.btnAdvancedOptions.TabIndex = 22;
             this.btnAdvancedOptions.TabStop = false;
             this.btnAdvancedOptions.Text = "Advanced options";
-            this.toolTip1.SetToolTip(this.btnAdvancedOptions, "Allows to change the bearing, elevation and power used to send the calibration pr" +
-        "obe.");
+            this.toolTip1.SetToolTip(this.btnAdvancedOptions, resources.GetString("btnAdvancedOptions.ToolTip"));
             this.btnAdvancedOptions.UseVisualStyleBackColor = true;
             this.btnAdvancedOptions.Click += new System.EventHandler(this.btnAdvancedOptions_Click);
             // 
@@ -133,66 +132,6 @@
             this.toolTip1.SetToolTip(this.button4, "Paste both X and Y from the clipboard.");
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.pasteToXYPad_Click);
-            // 
-            // txtInCalLocY
-            // 
-            this.txtInCalLocY.Location = new System.Drawing.Point(174, 50);
-            this.txtInCalLocY.Name = "txtInCalLocY";
-            this.txtInCalLocY.Size = new System.Drawing.Size(35, 23);
-            this.txtInCalLocY.TabIndex = 3;
-            this.txtInCalLocY.TabStop = false;
-            this.txtInCalLocY.Text = "0";
-            this.txtInCalLocY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtInCalLocY, "Y Coordinate");
-            this.txtInCalLocY.Enter += new System.EventHandler(this.txtFocus_Enter);
-            this.txtInCalLocY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
-            this.txtInCalLocY.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
-            this.txtInCalLocY.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
-            // 
-            // txtInCalLocX
-            // 
-            this.txtInCalLocX.Location = new System.Drawing.Point(136, 50);
-            this.txtInCalLocX.Name = "txtInCalLocX";
-            this.txtInCalLocX.Size = new System.Drawing.Size(35, 23);
-            this.txtInCalLocX.TabIndex = 2;
-            this.txtInCalLocX.TabStop = false;
-            this.txtInCalLocX.Text = "0";
-            this.txtInCalLocX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtInCalLocX, "X Coordinate");
-            this.txtInCalLocX.Enter += new System.EventHandler(this.txtFocus_Enter);
-            this.txtInCalLocX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
-            this.txtInCalLocX.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
-            this.txtInCalLocX.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
-            // 
-            // txtInPadLocY
-            // 
-            this.txtInPadLocY.Location = new System.Drawing.Point(174, 24);
-            this.txtInPadLocY.Name = "txtInPadLocY";
-            this.txtInPadLocY.Size = new System.Drawing.Size(35, 23);
-            this.txtInPadLocY.TabIndex = 1;
-            this.txtInPadLocY.TabStop = false;
-            this.txtInPadLocY.Text = "0";
-            this.txtInPadLocY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtInPadLocY, "Y Coordinate");
-            this.txtInPadLocY.Enter += new System.EventHandler(this.txtFocus_Enter);
-            this.txtInPadLocY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
-            this.txtInPadLocY.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
-            this.txtInPadLocY.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
-            // 
-            // txtInPadLocX
-            // 
-            this.txtInPadLocX.Location = new System.Drawing.Point(136, 24);
-            this.txtInPadLocX.Name = "txtInPadLocX";
-            this.txtInPadLocX.Size = new System.Drawing.Size(35, 23);
-            this.txtInPadLocX.TabIndex = 0;
-            this.txtInPadLocX.TabStop = false;
-            this.txtInPadLocX.Text = "0";
-            this.txtInPadLocX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtInPadLocX, "X Coordinate");
-            this.txtInPadLocX.Enter += new System.EventHandler(this.txtFocus_Enter);
-            this.txtInPadLocX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
-            this.txtInPadLocX.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
-            this.txtInPadLocX.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
             // 
             // lblCalPow
             // 
@@ -356,20 +295,6 @@
             this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
             this.btnCalculate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnCalculate_KeyUp);
             // 
-            // txtInDstY
-            // 
-            this.txtInDstY.Location = new System.Drawing.Point(142, 30);
-            this.txtInDstY.Name = "txtInDstY";
-            this.txtInDstY.Size = new System.Drawing.Size(36, 23);
-            this.txtInDstY.TabIndex = 5;
-            this.txtInDstY.Text = "0";
-            this.txtInDstY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtInDstY, "Y Coordinate");
-            this.txtInDstY.Enter += new System.EventHandler(this.txtFocus_Enter);
-            this.txtInDstY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
-            this.txtInDstY.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalculate_KeyUp);
-            this.txtInDstY.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -379,20 +304,6 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Destination:";
             this.toolTip1.SetToolTip(this.label8, "X/Y Coordinates of the desired destination");
-            // 
-            // txtInDstX
-            // 
-            this.txtInDstX.Location = new System.Drawing.Point(102, 30);
-            this.txtInDstX.Name = "txtInDstX";
-            this.txtInDstX.Size = new System.Drawing.Size(36, 23);
-            this.txtInDstX.TabIndex = 4;
-            this.txtInDstX.Text = "0";
-            this.txtInDstX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.txtInDstX, "X Coordinate");
-            this.txtInDstX.Enter += new System.EventHandler(this.txtFocus_Enter);
-            this.txtInDstX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
-            this.txtInDstX.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalculate_KeyUp);
-            this.txtInDstX.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
             // 
             // grpResult
             // 
@@ -546,6 +457,94 @@
             this.lblStatus.Size = new System.Drawing.Size(103, 15);
             this.lblStatus.TabIndex = 17;
             this.lblStatus.Text = "Needs calibration";
+            // 
+            // txtInDstY
+            // 
+            this.txtInDstY.Location = new System.Drawing.Point(142, 30);
+            this.txtInDstY.Name = "txtInDstY";
+            this.txtInDstY.Size = new System.Drawing.Size(36, 23);
+            this.txtInDstY.TabIndex = 5;
+            this.txtInDstY.Text = "0";
+            this.txtInDstY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtInDstY, "Y Coordinate");
+            this.txtInDstY.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtInDstY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtInDstY.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalculate_KeyUp);
+            this.txtInDstY.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
+            // 
+            // txtInDstX
+            // 
+            this.txtInDstX.Location = new System.Drawing.Point(102, 30);
+            this.txtInDstX.Name = "txtInDstX";
+            this.txtInDstX.Size = new System.Drawing.Size(36, 23);
+            this.txtInDstX.TabIndex = 4;
+            this.txtInDstX.Text = "0";
+            this.txtInDstX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtInDstX, "X Coordinate");
+            this.txtInDstX.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtInDstX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtInDstX.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalculate_KeyUp);
+            this.txtInDstX.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
+            // 
+            // txtInCalLocY
+            // 
+            this.txtInCalLocY.Location = new System.Drawing.Point(174, 50);
+            this.txtInCalLocY.Name = "txtInCalLocY";
+            this.txtInCalLocY.Size = new System.Drawing.Size(35, 23);
+            this.txtInCalLocY.TabIndex = 3;
+            this.txtInCalLocY.TabStop = false;
+            this.txtInCalLocY.Text = "0";
+            this.txtInCalLocY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtInCalLocY, "Y Coordinate");
+            this.txtInCalLocY.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtInCalLocY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtInCalLocY.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
+            this.txtInCalLocY.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
+            // 
+            // txtInCalLocX
+            // 
+            this.txtInCalLocX.Location = new System.Drawing.Point(136, 50);
+            this.txtInCalLocX.Name = "txtInCalLocX";
+            this.txtInCalLocX.Size = new System.Drawing.Size(35, 23);
+            this.txtInCalLocX.TabIndex = 2;
+            this.txtInCalLocX.TabStop = false;
+            this.txtInCalLocX.Text = "0";
+            this.txtInCalLocX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtInCalLocX, "X Coordinate");
+            this.txtInCalLocX.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtInCalLocX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtInCalLocX.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
+            this.txtInCalLocX.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
+            // 
+            // txtInPadLocY
+            // 
+            this.txtInPadLocY.Location = new System.Drawing.Point(174, 24);
+            this.txtInPadLocY.Name = "txtInPadLocY";
+            this.txtInPadLocY.Size = new System.Drawing.Size(35, 23);
+            this.txtInPadLocY.TabIndex = 1;
+            this.txtInPadLocY.TabStop = false;
+            this.txtInPadLocY.Text = "0";
+            this.txtInPadLocY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtInPadLocY, "Y Coordinate");
+            this.txtInPadLocY.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtInPadLocY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtInPadLocY.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
+            this.txtInPadLocY.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
+            // 
+            // txtInPadLocX
+            // 
+            this.txtInPadLocX.Location = new System.Drawing.Point(136, 24);
+            this.txtInPadLocX.Name = "txtInPadLocX";
+            this.txtInPadLocX.Size = new System.Drawing.Size(35, 23);
+            this.txtInPadLocX.TabIndex = 0;
+            this.txtInPadLocX.TabStop = false;
+            this.txtInPadLocX.Text = "0";
+            this.txtInPadLocX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.txtInPadLocX, "X Coordinate");
+            this.txtInPadLocX.Enter += new System.EventHandler(this.txtFocus_Enter);
+            this.txtInPadLocX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterDigits_KeyPress);
+            this.txtInPadLocX.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCalibrate_KeyUp);
+            this.txtInPadLocX.Leave += new System.EventHandler(this.txtNonEmpty_Leave);
             // 
             // Telescience
             // 
