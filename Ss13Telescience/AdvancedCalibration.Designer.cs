@@ -184,7 +184,7 @@
             this.label5.Size = new System.Drawing.Size(186, 90);
             this.label5.TabIndex = 26;
             this.label5.Text = "Here you can manually set some calculated offsets without calibrating.\r\nUseful wh" +
-    "en another player shares them to you.";
+    "en another player shares them with you.";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel2

@@ -90,6 +90,13 @@
     <Compile Include="AdvancedCalibration.Designer.cs">
       <DependentUpon>AdvancedCalibration.cs</DependentUpon>
     </Compile>
+    <Compile Include="CoordinatesHistory\CoordinateHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoordinatesHistory\CoordinateHistory.Designer.cs">
+      <DependentUpon>CoordinateHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoordinatesHistory\CoordinatesItem.cs" />
     <Compile Include="InstructionsPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,11 +114,14 @@
     <Compile Include="TextBoxPaste.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TrajectoryCalculator.cs" />
-    <Compile Include="TrajectoryCalculatorParadise.cs" />
+    <Compile Include="TrajectoryCalculation\TrajectoryCalculator.cs" />
+    <Compile Include="TrajectoryCalculation\TrajectoryCalculatorParadise.cs" />
     <Compile Include="util.cs" />
     <EmbeddedResource Include="AdvancedCalibration.resx">
       <DependentUpon>AdvancedCalibration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoordinatesHistory\CoordinateHistory.resx">
+      <DependentUpon>CoordinateHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InstructionsPanel.resx">
       <DependentUpon>InstructionsPanel.cs</DependentUpon>
@@ -129,6 +139,7 @@
     <EmbeddedResource Include="Telescience2.resx">
       <DependentUpon>Telescience2.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Ss13Telescience.CoordinatesHistory.CoordinatesItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

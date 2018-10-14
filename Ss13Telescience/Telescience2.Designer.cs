@@ -423,17 +423,15 @@
             // 
             // btnDirectory
             // 
-            this.btnDirectory.Enabled = false;
-            this.btnDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnDirectory.Location = new System.Drawing.Point(236, 253);
+            this.btnDirectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.btnDirectory.Location = new System.Drawing.Point(225, 250);
             this.btnDirectory.Name = "btnDirectory";
-            this.btnDirectory.Size = new System.Drawing.Size(149, 24);
+            this.btnDirectory.Size = new System.Drawing.Size(159, 27);
             this.btnDirectory.TabIndex = 6;
             this.btnDirectory.TabStop = false;
-            this.btnDirectory.Text = "Directory";
+            this.btnDirectory.Text = "Coordinates History";
             this.toolTip1.SetToolTip(this.btnDirectory, "Pressing this button will copy the bearing to the clipboard.");
             this.btnDirectory.UseVisualStyleBackColor = true;
-            this.btnDirectory.Visible = false;
             this.btnDirectory.Click += new System.EventHandler(this.btnDirectory_Click);
             // 
             // label7

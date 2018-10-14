@@ -16,9 +16,10 @@ namespace Ss13Telescience.TrajectoryCalculation {
 
         // Calculations options list
         private static CalculationServerOption[] _CalculationOptionsList = new CalculationServerOption[] {
-                new CalculationServerOption{CalculationName = "Default calculation", CalcType = TrajectoryCalculator.CalculationType.Default},
-                new CalculationServerOption{CalculationName = "Paradise Server", CalcType = TrajectoryCalculator.CalculationType.Default}, // Default works on paradise.
-                // ... Add more servers here even if they use the default one. So players know this work on the server they play.
+                new CalculationServerOption{CalculationName = "Default Server", CalcType = TrajectoryCalculator.CalculationType.Default},
+                new CalculationServerOption{CalculationName = "Paradise Station", CalcType = TrajectoryCalculator.CalculationType.Default}, 
+                // Default works on paradise.
+                // ... Add more servers here even if they use the default one. This way players know this work on the server they play.
                 };
         /// <summary>
         /// List of available calculations for different servers.
@@ -85,7 +86,7 @@ namespace Ss13Telescience.TrajectoryCalculation {
         /// Creates a new calculator of the selected type.
         /// </summary>
         public static TrajectoryCalculator createCalculator(int padX, int padY, int calX, int calY, int calPower, float calBearing, float calElevation, CalculationType CalcType) {
-            switch ( CalcType ) {
+            switch(CalcType) {
                 case CalculationType.Default:
                 default:
                     return new TrajectoryCalculatorParadise( padX, padY, calX, calY, calPower, calBearing, calElevation );

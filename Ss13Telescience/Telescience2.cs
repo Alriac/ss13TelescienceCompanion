@@ -1,4 +1,5 @@
-﻿using Ss13Telescience.TrajectoryCalculation;
+﻿using Ss13Telescience.CoordinatesHistory;
+using Ss13Telescience.TrajectoryCalculation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,7 @@ using System.Windows.Forms;
 namespace Ss13Telescience {
     public partial class Telescience : Form {
 
+        CoordinateHistory History;
         TrajectoryCalculator trajcalc;
         private int uses = 0;
         private String tmpTxtText = "0";
@@ -35,7 +37,7 @@ namespace Ss13Telescience {
             // Sets the window position from last saved:
             int posX = Properties.Settings.Default.formPosX;
             int posY = Properties.Settings.Default.formPosY;
-            if ( posX >= 0 && posY >= 0 ) {
+            if(posX >= 0 && posY >= 0) {
                 this.StartPosition = FormStartPosition.Manual;
                 this.Location = new Point( posX, posY );
             }
@@ -43,6 +45,7 @@ namespace Ss13Telescience {
 
         private void Telescience2_Load(object sender, EventArgs e) {
             // Initialize stuff
+            this.History = new CoordinateHistory( this.GetCalculator );
             this.trajcalc = TrajectoryCalculator.createCalculator( 0, 0, 0, 0, 0, 0, 0, TrajectoryCalculator.CalculationOptionsList[Properties.Settings.Default.selectedServer].CalcType );
 
             // Topmost window setting
@@ -56,17 +59,17 @@ namespace Ss13Telescience {
         // Paste values to the coordinates input using the paste "<" button.
 
         private void pasteToXYPad_Click(object sender, EventArgs e) {
-            if ( Clipboard.ContainsText() ) {
+            if(Clipboard.ContainsText()) {
                 pasteToXY( txtInPadLocX, txtInPadLocY, Clipboard.GetText() );
             }
         }
         private void pasteToXYCal_Click(object sender, EventArgs e) {
-            if ( Clipboard.ContainsText() ) {
+            if(Clipboard.ContainsText()) {
                 pasteToXY( txtInCalLocX, txtInCalLocY, Clipboard.GetText() );
             }
         }
         private void pasteToXYDst_Click(object sender, EventArgs e) {
-            if ( Clipboard.ContainsText() ) {
+            if(Clipboard.ContainsText()) {
                 pasteToXY( txtInDstX, txtInDstY, Clipboard.GetText() );
             }
         }
@@ -113,13 +116,15 @@ namespace Ss13Telescience {
             int xTarget = Util.readInt( txtInDstX );
             int yTarget = Util.readInt( txtInDstY );
 
-            if ( trajcalc != null ) { // If its null it means the calibration button wasn't used or something bad happened.
-                if ( trajcalc.calcAll( xTarget, yTarget ) ) {
+            if(trajcalc != null) { // If its null it means the calibration button wasn't used or something bad happened.
+                if(trajcalc.calcAll( xTarget, yTarget )) {
                     // If the calculation went ok, show the results to the user.
                     btnCpyBearing.Text = Math.Round( trajcalc.resBearing, 2 ).ToString();
                     btnCpyElevation.Text = Math.Round( trajcalc.resElevation, 1 ).ToString();
                     btnCpyPower.Text = trajcalc.resPower.ToString();
                     setStatus( "Calculation done! Results ready" );
+
+                    History.CalculationPerormed( xTarget, yTarget, trajcalc.resBearing, trajcalc.resElevation, trajcalc.resPower );
                 } else {
                     // If the calculation went wrong, show the error to the user.
                     btnCpyBearing.Text = btnCpyElevation.Text = btnCpyPower.Text = "-";
@@ -159,8 +164,8 @@ namespace Ss13Telescience {
             newDialog.TopMost = this.TopMost; // Avoid the new dialog to stay behind the main form.
             DialogResult result = newDialog.ShowDialog();
 
-            if ( result == DialogResult.Cancel ) setStatus( "Calibration settings not modified" );
-            else if ( result == DialogResult.OK ) {
+            if(result == DialogResult.Cancel) setStatus( "Calibration settings not modified" );
+            else if(result == DialogResult.OK) {
                 grpCompute.Enabled = grpCompute.Enabled || trajcalc.bearingOffset != newDialog.currentBearingOffset || trajcalc.powerOffset != newDialog.currentPowerOffset;
                 this.trajcalc.setOffsets( newDialog.currentBearingOffset, newDialog.currentPowerOffset );
 
@@ -178,7 +183,7 @@ namespace Ss13Telescience {
         /// Shows the About window
         /// </summary>
         private void btnAbout_Click(object sender, EventArgs e) {
-            if ( instructions.Visible ) instructions.Hide();
+            if(instructions.Visible) instructions.Hide();
             instructions.documentType = InstructionsPanel.documentTypes.About;
             instructions.Show();
         }
@@ -187,7 +192,7 @@ namespace Ss13Telescience {
         /// Shows the Instructions window
         /// </summary>
         private void btnInstructions_Click(object sender, EventArgs e) {
-            if ( instructions.Visible ) instructions.Hide();
+            if(instructions.Visible) instructions.Hide();
             instructions.documentType = InstructionsPanel.documentTypes.Instructions;
             instructions.Show();
         }
@@ -222,13 +227,13 @@ namespace Ss13Telescience {
         private void txtNonEmpty_Leave(object sender, EventArgs e) {
             TextBox txt = (TextBox)sender;
 
-            if ( txt.Text.Length == 0 ) {
-                if ( tmpTxtText.Length == 0 ) txt.Text = "0";
+            if(txt.Text.Length == 0) {
+                if(tmpTxtText.Length == 0) txt.Text = "0";
                 else txt.Text = tmpTxtText;
             } else {
                 int parsed; // Only used to check if the value is an integer.
-                if ( !int.TryParse( txt.Text, out parsed ) ) {
-                    if ( tmpTxtText.Length == 0 ) txt.Text = "0";
+                if(!int.TryParse( txt.Text, out parsed )) {
+                    if(tmpTxtText.Length == 0) txt.Text = "0";
                     else txt.Text = tmpTxtText;
                 }
             }
@@ -241,7 +246,7 @@ namespace Ss13Telescience {
         /// <returns>Returns true if is an integer, false otherwise.</returns>
         bool pasteTxtCheckForInt(TextBoxPaste txt) {
             int readed;
-            if ( int.TryParse( txt.GetPastedText(), out readed ) ) {
+            if(int.TryParse( txt.GetPastedText(), out readed )) {
                 txt.Text = readed.ToString();
                 return true;
             }
@@ -253,18 +258,18 @@ namespace Ss13Telescience {
         //
         private void pastePadLoc(object sender, EventArgs e) {
             TextBoxPaste txt = (TextBoxPaste)sender;
-            if ( pasteTxtCheckForInt( txt ) ) return;
-            if ( pasteToXY( txtInPadLocX, txtInPadLocY, txt.GetPastedText() ) ) txtInCalLocX.Focus();
+            if(pasteTxtCheckForInt( txt )) return;
+            if(pasteToXY( txtInPadLocX, txtInPadLocY, txt.GetPastedText() )) txtInCalLocX.Focus();
         }
         private void pasteCalLoc(object sender, EventArgs e) {
             TextBoxPaste txt = (TextBoxPaste)sender;
-            if ( pasteTxtCheckForInt( txt ) ) return;
-            if ( pasteToXY( txtInCalLocX, txtInCalLocY, txt.GetPastedText() ) ) btnCalibrate.Focus();
+            if(pasteTxtCheckForInt( txt )) return;
+            if(pasteToXY( txtInCalLocX, txtInCalLocY, txt.GetPastedText() )) btnCalibrate.Focus();
         }
         private void pasteDstLoc(object sender, EventArgs e) {
             TextBoxPaste txt = (TextBoxPaste)sender;
-            if ( pasteTxtCheckForInt( txt ) ) return;
-            if ( pasteToXY( txtInDstX, txtInDstY, txt.GetPastedText() ) ) {
+            if(pasteTxtCheckForInt( txt )) return;
+            if(pasteToXY( txtInDstX, txtInDstY, txt.GetPastedText() )) {
                 // If the paste was successful, perform the calculation.
                 btnCalculate.Focus();
                 btnCalculate.PerformClick();
@@ -277,7 +282,7 @@ namespace Ss13Telescience {
         /// Checks for enter key and clicks the calibrate button.
         /// </summary>
         private void txtCalibrate_KeyUp(object sender, KeyEventArgs e) {
-            if ( e.KeyCode == Keys.Enter ) {
+            if(e.KeyCode == Keys.Enter) {
                 btnCalibrate.Focus();
                 btnCalibrate.PerformClick();
             }
@@ -286,7 +291,7 @@ namespace Ss13Telescience {
         /// Checks for enter key and clicks the calculate button.
         /// </summary>
         private void txtCalculate_KeyUp(object sender, KeyEventArgs e) {
-            if ( e.KeyCode == Keys.Enter ) {
+            if(e.KeyCode == Keys.Enter) {
                 btnCalculate.Focus();
                 btnCalculate.PerformClick();
             }
@@ -294,10 +299,12 @@ namespace Ss13Telescience {
 
         private void btnDirectory_Click(object sender, EventArgs e) {
             // Opens the directory window.
-            // The directory is unimplemented. The plan was to make an history of the coordinates you already used.
-            // Was never planned to allow save or loading coordinates list and it should never allow to do so.
+            this.History.Show();
         }
 
+        public TrajectoryCalculator GetCalculator() {
+            return this.trajcalc;
+        }
 
 
         #endregion
@@ -317,7 +324,7 @@ namespace Ss13Telescience {
 
             int n1;
             int n2;
-            if ( int.TryParse( groups["n1"].ToString(), out n1 ) && int.TryParse( groups["n2"].ToString(), out n2 ) ) {
+            if(int.TryParse( groups["n1"].ToString(), out n1 ) && int.TryParse( groups["n2"].ToString(), out n2 )) {
                 txtX.Text = n1.ToString();
                 txtY.Text = n2.ToString();
 
@@ -353,6 +360,9 @@ namespace Ss13Telescience {
             Properties.Settings.Default.formPosX = this.Location.X;
             Properties.Settings.Default.formPosY = this.Location.Y;
             Properties.Settings.Default.Save();
+
+            this.History.Hide();
+            this.History.Close();
         }
 
         /// <summary>
@@ -405,11 +415,11 @@ namespace Ss13Telescience {
         #endregion
 
         private void btnCalculate_KeyUp(object sender, KeyEventArgs e) {
-            if ( e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1 || e.KeyCode == Keys.B ) {
+            if(e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1 || e.KeyCode == Keys.B) {
                 btnCpyBearing.PerformClick();
-            } else if ( e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.E ) {
+            } else if(e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2 || e.KeyCode == Keys.E) {
                 btnCpyElevation.PerformClick();
-            } else if ( e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3 || e.KeyCode == Keys.P ) {
+            } else if(e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3 || e.KeyCode == Keys.P) {
                 btnCpyPower.PerformClick();
             }
         }
