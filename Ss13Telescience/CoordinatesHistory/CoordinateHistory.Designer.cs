@@ -29,6 +29,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CoordinateHistory));
             this.dgvHistory = new System.Windows.Forms.DataGridView();
             this.coordinatesItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -192,7 +193,7 @@
             // 
             this.elevationDataGridViewTextBoxColumn.DataPropertyName = "Elevation";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.Format = "N1";
             dataGridViewCellStyle4.NullValue = "-";
             this.elevationDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.elevationDataGridViewTextBoxColumn.HeaderText = "Elevation";
@@ -214,10 +215,17 @@
             // 
             // Delete
             // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle6.NullValue = "X";
+            this.Delete.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Delete.HeaderText = "Delete";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Delete.Text = "X";
             this.Delete.Width = 60;
             // 
             // CoordinateHistory
